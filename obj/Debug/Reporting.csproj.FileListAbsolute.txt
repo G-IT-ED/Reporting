@@ -1,4 +1,3 @@
-C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.csprojAssemblyReference.cache
 C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.exe.config
 C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.Properties.Resources.resources
 C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.csproj.GenerateResource.cache
@@ -159,7 +158,6 @@ C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.csproj.CopyC
 C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.exe
 C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.pdb
 C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.Form1.resources
-C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.exe.licenses
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\DevExpress.Data.v18.1.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\DevExpress.Utils.v18.1.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\DevExpress.XtraBars.v18.1.dll
@@ -240,3 +238,5 @@ C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\es\DevExpress.Office.v
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\ja\DevExpress.Office.v18.1.Core.resources.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\ru\DevExpress.Office.v18.1.Core.resources.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.SplashScreen1.resources
+C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.exe.licenses

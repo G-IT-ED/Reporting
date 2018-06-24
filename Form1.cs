@@ -36,30 +36,39 @@ namespace Reporting
             _bindingList.Add(new ReportView("Kоличество брикетов, проходящих проверку на наличие металла", dataMapper.CountTestedPresenceOfMetal(start,finish)));
         }
 
-        private void _viewButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private async void _viewButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(SplashScreen1));
+            await ShowData();
+            SplashScreenManager.CloseForm();
+        }
+
+        private async Task ShowData()
         {
             try
-            {
-                SplashScreenManager.ShowForm(typeof(SplashScreen1));
+            {                
                 DateTime start = (DateTime)_dateStart.EditValue;
                 DateTime finish = (DateTime)_dateEnd.EditValue;
-                if(start>finish)
+                if (start > finish)
                 {
                     MessageBox.Show("Дата начала должна быть раньше даты окончания!");
                     return;
                 }
                 GetData(start, finish.AddDays(1));
-                gridControl1.DataSource = _bindingList;
-                SplashScreenManager.CloseForm();
+                gridControl1.DataSource = _bindingList;                
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Не удалось загрузить данные!", ex.Message);
             }
-            
         }
 
-        private void ExportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private async void ExportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            await Export();
+        }
+
+        private async Task Export()
         {
             //выбираем путь
             var saveFileDialog = new SaveFileDialog
@@ -75,6 +84,21 @@ namespace Reporting
                 return;
             }
             gridControl1.ExportToXlsx(saveFileDialog.FileName);
+        }
+
+        private void _exitButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Close();
+        }
+
+        private async void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            await Export();
+        }
+
+        private async void _exportBtn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            await Export();
         }
     }
 }

@@ -116,7 +116,9 @@
             // 
             this._exitButton.Caption = "Выход";
             this._exitButton.Id = 8;
+            this._exitButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("_exitButton.ImageOptions.Image")));
             this._exitButton.Name = "_exitButton";
+            this._exitButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this._exitButton_ItemClick);
             // 
             // _dateStart
             // 
@@ -157,6 +159,7 @@
             this.barButtonItem1.Caption = "barButtonItem1";
             this.barButtonItem1.Id = 7;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
             // 
             // _exportBtn
             // 
@@ -164,6 +167,7 @@
             this._exportBtn.Id = 9;
             this._exportBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("_exportBtn.ImageOptions.Image")));
             this._exportBtn.Name = "_exportBtn";
+            this._exportBtn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this._exportBtn_ItemClick);
             // 
             // ribbonPage1
             // 
