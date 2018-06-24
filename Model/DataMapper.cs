@@ -99,7 +99,27 @@ namespace Reporting.Model
             return context.GetCountCulled(dateList);
         }
 
+        /// <summary>
+        /// Kоличество брикетов, проходящих проверку на наличие металла (не умирают в пределах или сразу после зоны "Брак по металлу")
+        /// </summary>
+        /// <returns></returns>
+        public int CountTestedPresenceOfMetal()
+        {
+            var zonaMetal = zones.FirstOrDefault(x => x.ZoneName == "Брак по металлу");
+            var left = zonaMetal.Left - zonaMetal.LeftFault;
+            var right = zonaMetal.Right + zonaMetal.RightFault;
 
+
+            var sql = @"SELECT   
+                          MIN(o.crt_date ),MAX(o.crt_date ),o.object_id
+                        FROM
+                          main.object_track AS o
+                          WHERE o.x > " + left + " AND o.x < " + right +
+                        "GROUP BY o.object_id";
+            List<DateData> dateList = context.GetDateData(sql);
+
+            return context.GetCountMetal(dateList);
+        }
 
     }
 

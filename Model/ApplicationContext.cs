@@ -114,5 +114,49 @@ namespace Reporting.Model
 
             return result;
         }
+
+        internal int GetCountMetal(List<DateData> dateList)
+        {
+            int result = 0;
+            try
+            {
+                using (NpgsqlConnection conn = new NpgsqlConnection(conn_param))
+                {
+                    conn.Open();
+                    foreach (var data in dateList)
+                    {
+                        var sqlCommand = @"SELECT   
+                          o.status_type_id
+                        FROM
+                          main.object_status AS o
+                          WHERE o.crt_date > " + data.DateStart +
+                          "AND o.crt_date < " + data.DateFinish +
+                          "AND o.object_id = " + data.IdObject;
+                        NpgsqlCommand cmd = new NpgsqlCommand(sqlCommand, conn);
+                        NpgsqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.HasRows)
+                        {
+                            var count = 0;
+                            while (dr.Read())
+                            {
+                                if (dr.GetInt32(0) == 1)
+                                    count = 1;
+                                else
+                                    count = 0;
+                            }
+                            result += count;
+                        }
+                        dr.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось получить данные из БД!", ex.Message);
+            }
+
+            return result;
+        }
     }
 }
