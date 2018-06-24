@@ -146,6 +146,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\ApplicationContext.cs" />
+    <Compile Include="Model\DataMapper.cs" />
+    <Compile Include="Model\DateData.cs" />
+    <Compile Include="Model\ReportView.cs" />
     <Compile Include="Model\Status_type.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

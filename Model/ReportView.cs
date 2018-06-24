@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Reporting.Model
 {
-    class ReportView
+    public class ReportView
     {
         public string Name { get; set; }
         public int Count { get; set; }
