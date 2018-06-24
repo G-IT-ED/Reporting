@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::Reporting.SplashScreen1), true, true);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             this._viewButton = new DevExpress.XtraBars.BarButtonItem();
@@ -59,6 +59,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // splashScreenManager1
+            // 
+            splashScreenManager1.ClosingDelay = 500;
             // 
             // ribbonControl1
             // 
@@ -96,6 +100,7 @@
             // 
             this._viewButton.Caption = "Просмотр";
             this._viewButton.Id = 5;
+            this._viewButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("_viewButton.ImageOptions.Image")));
             this._viewButton.Name = "_viewButton";
             this._viewButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this._viewButton_ItemClick);
             // 
@@ -103,6 +108,7 @@
             // 
             this.ExportButton.Caption = "Выгрузить";
             this.ExportButton.Id = 6;
+            this.ExportButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("ExportButton.ImageOptions.Image")));
             this.ExportButton.Name = "ExportButton";
             this.ExportButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportButton_ItemClick);
             // 
@@ -116,7 +122,7 @@
             // 
             this._dateStart.Caption = "Начало";
             this._dateStart.Edit = this.repositoryItemDateEdit1;
-            this._dateStart.EditWidth = 200;
+            this._dateStart.EditWidth = 100;
             this._dateStart.Id = 2;
             this._dateStart.Name = "_dateStart";
             // 
@@ -133,7 +139,7 @@
             // 
             this._dateEnd.Caption = "Конец  ";
             this._dateEnd.Edit = this.repositoryItemDateEdit2;
-            this._dateEnd.EditWidth = 200;
+            this._dateEnd.EditWidth = 100;
             this._dateEnd.Id = 3;
             this._dateEnd.Name = "_dateEnd";
             // 
@@ -212,10 +218,6 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
-            // splashScreenManager1
-            // 
-            splashScreenManager1.ClosingDelay = 500;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,7 +226,7 @@
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Reporting";
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();

@@ -66,7 +66,7 @@ namespace Reporting
             {
                 FileName = "",
                 Title = @"Save as Excel File",
-                Filter = @"Excel Files(2003)(.xls)|*.xls|Excel (2007)(.xlsx)|*.xlsx|Excel (2010)(.xlsx)|*.xlsx",
+                Filter = @"Excel (2007)(.xlsx)|*.xlsx|Excel (2010)(.xlsx)|*.xlsx",
                 OverwritePrompt = true
             };
 
