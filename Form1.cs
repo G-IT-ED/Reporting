@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraSplashScreen;
 using Reporting.Model;
 
 namespace Reporting
@@ -18,6 +19,8 @@ namespace Reporting
         public Form1()
         {
             InitializeComponent();
+            _dateStart.EditValue = DateTime.Now;
+            _dateEnd.EditValue = DateTime.Now;
         }
 
         private void GetData(DateTime start, DateTime finish)
@@ -35,10 +38,25 @@ namespace Reporting
 
         private void _viewButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            DateTime start = (DateTime)_dateStart.EditValue;
-            DateTime finish = (DateTime)_dateEnd.EditValue;
-            GetData(start, finish);
-            gridControl1.DataSource = _bindingList;
+            try
+            {
+                SplashScreenManager.ShowForm(typeof(SplashScreen1));
+                DateTime start = (DateTime)_dateStart.EditValue;
+                DateTime finish = (DateTime)_dateEnd.EditValue;
+                if(start>finish)
+                {
+                    MessageBox.Show("Дата начала должна быть раньше даты окончания!");
+                    return;
+                }
+                GetData(start, finish.AddDays(1));
+                gridControl1.DataSource = _bindingList;
+                SplashScreenManager.CloseForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось загрузить данные!", ex.Message);
+            }
+            
         }
 
         private void ExportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

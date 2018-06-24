@@ -239,3 +239,4 @@ C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\de\DevExpress.Office.v
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\es\DevExpress.Office.v18.1.Core.resources.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\ja\DevExpress.Office.v18.1.Core.resources.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\ru\DevExpress.Office.v18.1.Core.resources.dll
+C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.SplashScreen1.resources

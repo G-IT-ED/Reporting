@@ -11,7 +11,7 @@ namespace Reporting.Model
 {
     public class ApplicationContext 
     {
-        private string conn_param = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=5f5a3a;Database=TestDb;";
+        private string conn_param = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=5f5a3a;Database=TestDB;";
         
         public int GetData(string sqlCommand)
         {
@@ -89,10 +89,10 @@ namespace Reporting.Model
                           1
                         FROM
                           main.object_status AS o
-                          WHERE o.crt_date > "+data.DateStart+
-                          "AND o.crt_date < "+data.DateFinish+
-                          "AND o.status_type_id = 2 " +
-                          "AND o.object_id = " + data.IdObject;
+                          WHERE o.crt_date > '"+data.DateStart+
+                          "' AND o.crt_date < '"+data.DateFinish+
+                          "' AND o.status_type_id = 2 " +
+                          " AND o.object_id = " + data.IdObject;
                     NpgsqlCommand cmd = new NpgsqlCommand(sqlCommand, conn);
                         NpgsqlDataReader dr = cmd.ExecuteReader();
 
@@ -129,9 +129,9 @@ namespace Reporting.Model
                           o.status_type_id
                         FROM
                           main.object_status AS o
-                          WHERE o.crt_date > " + data.DateStart +
-                          "AND o.crt_date < " + data.DateFinish +
-                          "AND o.object_id = " + data.IdObject;
+                          WHERE o.crt_date > '" + data.DateStart +
+                          "' AND o.crt_date < '" + data.DateFinish +
+                          "' AND o.object_id = " + data.IdObject;
                         NpgsqlCommand cmd = new NpgsqlCommand(sqlCommand, conn);
                         NpgsqlDataReader dr = cmd.ExecuteReader();
 
@@ -173,9 +173,9 @@ namespace Reporting.Model
                           o.status_type_id
                         FROM
                           main.object_status AS o
-                          WHERE o.crt_date > " + data.DateStart +
-                          "AND o.crt_date < " + data.DateFinish +
-                          "AND o.object_id = " + data.IdObject;
+                          WHERE o.crt_date > '" + data.DateStart +
+                          "' AND o.crt_date < '" + data.DateFinish +
+                          "' AND o.object_id = " + data.IdObject;
                         NpgsqlCommand cmd = new NpgsqlCommand(sqlCommand, conn);
                         NpgsqlDataReader dr = cmd.ExecuteReader();
 
