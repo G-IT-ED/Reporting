@@ -31,14 +31,15 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
+            this._viewButton = new DevExpress.XtraBars.BarButtonItem();
+            this.ExportButton = new DevExpress.XtraBars.BarButtonItem();
+            this._exitButton = new DevExpress.XtraBars.BarButtonItem();
             this._dateStart = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this._dateEnd = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemDateEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
-            this._viewButton = new DevExpress.XtraBars.BarButtonItem();
-            this.ExportButton = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this._exitButton = new DevExpress.XtraBars.BarButtonItem();
             this._exportBtn = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -47,8 +48,8 @@
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2)).BeginInit();
@@ -56,7 +57,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
             this.SuspendLayout();
             // 
             // ribbonControl1
@@ -82,6 +82,34 @@
             this.repositoryItemDateEdit1,
             this.repositoryItemDateEdit2});
             this.ribbonControl1.Size = new System.Drawing.Size(800, 141);
+            // 
+            // applicationMenu1
+            // 
+            this.applicationMenu1.ItemLinks.Add(this._viewButton);
+            this.applicationMenu1.ItemLinks.Add(this.ExportButton);
+            this.applicationMenu1.ItemLinks.Add(this._exitButton);
+            this.applicationMenu1.Name = "applicationMenu1";
+            this.applicationMenu1.Ribbon = this.ribbonControl1;
+            // 
+            // _viewButton
+            // 
+            this._viewButton.Caption = "Просмотр";
+            this._viewButton.Id = 5;
+            this._viewButton.Name = "_viewButton";
+            this._viewButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this._viewButton_ItemClick);
+            // 
+            // ExportButton
+            // 
+            this.ExportButton.Caption = "Выгрузить";
+            this.ExportButton.Id = 6;
+            this.ExportButton.Name = "ExportButton";
+            this.ExportButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.ExportButton_ItemClick);
+            // 
+            // _exitButton
+            // 
+            this._exitButton.Caption = "Выход";
+            this._exitButton.Id = 8;
+            this._exitButton.Name = "_exitButton";
             // 
             // _dateStart
             // 
@@ -117,35 +145,17 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemDateEdit2.Name = "repositoryItemDateEdit2";
             // 
-            // _viewButton
-            // 
-            this._viewButton.Caption = "Просмотр";
-            this._viewButton.Id = 5;
-            this._viewButton.Name = "_viewButton";
-            // 
-            // ExportButton
-            // 
-            this.ExportButton.Caption = "Выгрузить";
-            this.ExportButton.Id = 6;
-            this.ExportButton.Name = "ExportButton";
-            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "barButtonItem1";
             this.barButtonItem1.Id = 7;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
-            // _exitButton
-            // 
-            this._exitButton.Caption = "Выход";
-            this._exitButton.Id = 8;
-            this._exitButton.Name = "_exitButton";
-            // 
             // _exportBtn
             // 
             this._exportBtn.Caption = "Экспорт";
             this._exportBtn.Id = 9;
-            this._exportBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("_exitBtn.ImageOptions.Image")));
+            this._exportBtn.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("_exportBtn.ImageOptions.Image")));
             this._exportBtn.Name = "_exportBtn";
             // 
             // ribbonPage1
@@ -201,14 +211,6 @@
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
             // 
-            // applicationMenu1
-            // 
-            this.applicationMenu1.ItemLinks.Add(this._viewButton);
-            this.applicationMenu1.ItemLinks.Add(this.ExportButton);
-            this.applicationMenu1.ItemLinks.Add(this._exitButton);
-            this.applicationMenu1.Name = "applicationMenu1";
-            this.applicationMenu1.Ribbon = this.ribbonControl1;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -219,6 +221,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateEdit2.CalendarTimeProperties)).EndInit();
@@ -226,7 +229,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
