@@ -29,7 +29,7 @@ namespace Reporting.Model
         /// Количество брикетов, проходящих зону штатного появления 1 и  зону штатного появления 2
         /// </summary>
         /// <returns></returns>
-        public int CountPassingZoneRegularAppearance()
+        public int CountPassingZoneRegularAppearance(DateTime start, DateTime finish)
         {
             var zonaFirst = zones.FirstOrDefault(x => x.ZoneName == "Зона штатного появления 1");
             var zonaSecond = zones.FirstOrDefault(x => x.ZoneName == "Зона штатного появления 2");
@@ -47,41 +47,27 @@ namespace Reporting.Model
         /// Количество брикетов, приходящих на спуске ленточного конвейера
         /// </summary>
         /// <returns></returns>
-        public int CountComingDownConveyor()
+        public int CountComingDownConveyor(DateTime start, DateTime finish)
         {
             var zonaComing= zones.FirstOrDefault(x => x.ZoneName == "Спуск конвейера");
-            var left = zonaComing.Left - zonaComing.LeftFault;
-            var right = zonaComing.Right + zonaComing.RightFault;
-            var sql = @"SELECT   
-                          COUNT(DISTINCT object_track.object_id) 
-                        FROM
-                          main.object_track
-                          WHERE object_track.x > " + left + " AND object_track.x < " + right;
-            return context.GetData(sql);
+            return GetCount(zonaComing, start, finish);
         }
 
         /// <summary>
         /// Kоличество брикетов, проходящих систему взвешивания (весы)
         /// </summary>
         /// <returns></returns>
-        public int CountPassingWeighingSystem()
+        public int CountPassingWeighingSystem(DateTime start, DateTime finish)
         {
             var zonaWeight = zones.FirstOrDefault(x => x.ZoneName == "Весы");
-            var left = zonaWeight.Left - zonaWeight.LeftFault;
-            var right = zonaWeight.Right + zonaWeight.RightFault;
-            var sql = @"SELECT   
-                          COUNT(DISTINCT object_track.object_id) 
-                        FROM
-                          main.object_track
-                          WHERE object_track.x > " + left + " AND object_track.x < " + right;
-            return context.GetData(sql);
+            return GetCount(zonaWeight, start, finish);
         }
 
         /// <summary>
         /// Kоличество брикетов, отбракованных по весу (умирают в пределах зоны брака по весу);
         /// </summary>
         /// <returns></returns>
-        public int CountCulledByWeight()
+        public int CountCulledByWeight(DateTime start, DateTime finish)
         {
             var zonaWeight = zones.FirstOrDefault(x => x.ZoneName == "Брак по весу");
             var left = zonaWeight.Left - zonaWeight.LeftFault;
@@ -93,6 +79,8 @@ namespace Reporting.Model
                         FROM
                           main.object_track AS o
                           WHERE o.x > " + left + " AND o.x < " + right +
+                          "AND o.crt_date > " + start +
+                          "AND o.crt_date < " + finish +
                         "GROUP BY o.object_id";
             List<DateData> dateList = context.GetDateData(sql);
 
@@ -103,7 +91,7 @@ namespace Reporting.Model
         /// Kоличество брикетов, проходящих проверку на наличие металла (не умирают в пределах или сразу после зоны "Брак по металлу")
         /// </summary>
         /// <returns></returns>
-        public int CountTestedPresenceOfMetal()
+        public int CountTestedPresenceOfMetal(DateTime start, DateTime finish)
         {
             var zonaMetal = zones.FirstOrDefault(x => x.ZoneName == "Брак по металлу");
             var left = zonaMetal.Left - zonaMetal.LeftFault;
@@ -115,12 +103,71 @@ namespace Reporting.Model
                         FROM
                           main.object_track AS o
                           WHERE o.x > " + left + " AND o.x < " + right +
+                          "AND o.crt_date > " + start +
+                          "AND o.crt_date < " + finish +
                         "GROUP BY o.object_id";
             List<DateData> dateList = context.GetDateData(sql);
 
             return context.GetCountMetal(dateList);
         }
 
+        /// <summary>
+        /// Kоличество брикетов, отбракованных на металлодетекторе (умирают в зоне "Брак по металлу")
+        /// </summary>
+        /// <returns></returns>
+        public int CountCulledMetalDetector(DateTime start, DateTime finish)
+        {
+            var zonaMetal = zones.FirstOrDefault(x => x.ZoneName == "Брак по металлу");
+            var left = zonaMetal.Left - zonaMetal.LeftFault;
+            var right = zonaMetal.Right + zonaMetal.RightFault;
+
+
+            var sql = @"SELECT   
+                          MIN(o.crt_date ),MAX(o.crt_date ),o.object_id
+                        FROM
+                          main.object_track AS o
+                          WHERE o.x > " + left + " AND o.x < " + right +
+                          "AND o.crt_date > " + start +
+                          "AND o.crt_date < " + finish +
+                        "GROUP BY o.object_id";
+            List<DateData> dateList = context.GetDateData(sql);
+
+            return context.GetCountDeathMetal(dateList);
+        }
+
+        /// <summary>
+        /// Kоличество брикетов, проходящих через пленкообертку;
+        /// </summary>
+        /// <returns></returns>
+        public int CountPassingFilmWrapper(DateTime start, DateTime finish)
+        {
+            var zonaFilmWrapper = zones.FirstOrDefault(x => x.ZoneName == "Пленкообертка");
+            return GetCount(zonaFilmWrapper, start, finish);
+        }
+
+        /// <summary>
+        /// Kоличество брикетов, отправленных на склад ("проходящих через зону " Штатный уход")
+        /// </summary>
+        /// <returns></returns>
+        public int CountSentToWarehouse(DateTime start, DateTime finish)
+        {
+            var zonaWarehouse = zones.FirstOrDefault(x => x.ZoneName == "Штатный уход");
+            return GetCount(zonaWarehouse, start,finish);
+        }
+
+        private int GetCount(Zone zona, DateTime start, DateTime finish)
+        {
+            var left = zona.Left - zona.LeftFault;
+            var right = zona.Right + zona.RightFault;
+            var sql = @"SELECT   
+                          COUNT(DISTINCT object_track.object_id) 
+                        FROM
+                          main.object_track
+                          WHERE object_track.x > " + left + " AND object_track.x < " + right +
+                          "AND object_track.crt_date > " + start +
+                          "AND object_track.crt_date < " + finish;
+            return context.GetData(sql);
+        }
     }
 
     class Zone

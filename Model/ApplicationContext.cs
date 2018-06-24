@@ -158,5 +158,46 @@ namespace Reporting.Model
 
             return result;
         }
+
+        internal int GetCountDeathMetal(List<DateData> dateList)
+        {
+            int result = 0;
+            try
+            {
+                using (NpgsqlConnection conn = new NpgsqlConnection(conn_param))
+                {
+                    conn.Open();
+                    foreach (var data in dateList)
+                    {
+                        var sqlCommand = @"SELECT   
+                          o.status_type_id
+                        FROM
+                          main.object_status AS o
+                          WHERE o.crt_date > " + data.DateStart +
+                          "AND o.crt_date < " + data.DateFinish +
+                          "AND o.object_id = " + data.IdObject;
+                        NpgsqlCommand cmd = new NpgsqlCommand(sqlCommand, conn);
+                        NpgsqlDataReader dr = cmd.ExecuteReader();
+
+                        if (dr.HasRows)
+                        {
+                            var count = 0;
+                            while (dr.Read())
+                            {
+                                count++;
+                            }
+                            result += (count==0)?0:1;
+                        }
+                        dr.Close();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не удалось получить данные из БД!", ex.Message);
+            }
+
+            return result;
+        }
     }
 }
