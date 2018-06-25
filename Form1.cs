@@ -39,6 +39,7 @@ namespace Reporting
         private async void _viewButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             SplashScreenManager.ShowForm(typeof(SplashScreen1));
+            _bindingList.Clear();
             await ShowData();
             SplashScreenManager.CloseForm();
         }
