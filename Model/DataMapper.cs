@@ -39,9 +39,9 @@ namespace Reporting.Model
                           COUNT(DISTINCT object_track.object_id) 
                         FROM
                           main.object_track
-                          WHERE object_track.x > "+left+" AND object_track.x < "+right+
-                          " AND object_track.crt_date > '" + start +
-                          "' AND object_track.crt_date < '" + finish + "'";
+                          WHERE object_track.x >= "+left+" AND object_track.x <= "+right+
+                          " AND object_track.crt_date >= '" + start +
+                          "' AND object_track.crt_date <= '" + finish + "'";
             return context.GetData(sql);
         }
 
@@ -80,9 +80,9 @@ namespace Reporting.Model
                           MIN(o.crt_date ),MAX(o.crt_date ),o.object_id
                         FROM
                           main.object_track AS o
-                          WHERE o.x > " + left + " AND o.x < " + right +
-                          " AND o.crt_date > '" + start +
-                          "' AND o.crt_date < '" + finish +
+                          WHERE o.x >= " + left + " AND o.x <= " + right +
+                          " AND o.crt_date >= '" + start +
+                          "' AND o.crt_date <= '" + finish +
                         "' GROUP BY o.object_id";
             List<DateData> dateList = context.GetDateData(sql);
 
@@ -104,9 +104,9 @@ namespace Reporting.Model
                           MIN(o.crt_date ),MAX(o.crt_date ),o.object_id
                         FROM
                           main.object_track AS o
-                          WHERE o.x > " + left + " AND o.x < " + right +
-                          " AND o.crt_date > '" + start +
-                          "' AND o.crt_date < '" + finish +
+                          WHERE o.x >= " + left + " AND o.x <= " + right +
+                          " AND o.crt_date >= '" + start +
+                          "' AND o.crt_date <= '" + finish +
                         "' GROUP BY o.object_id";
             List<DateData> dateList = context.GetDateData(sql);
 
@@ -128,9 +128,9 @@ namespace Reporting.Model
                           MIN(o.crt_date ),MAX(o.crt_date ),o.object_id
                         FROM
                           main.object_track AS o
-                          WHERE o.x > " + left + " AND o.x < " + right +
-                          " AND o.crt_date > '" + start +
-                          "' AND o.crt_date < '" + finish +
+                          WHERE o.x >= " + left + " AND o.x <= " + right +
+                          " AND o.crt_date >= '" + start +
+                          "' AND o.crt_date <= '" + finish +
                         "' GROUP BY o.object_id";
             List<DateData> dateList = context.GetDateData(sql);
 
@@ -165,9 +165,9 @@ namespace Reporting.Model
                           COUNT(DISTINCT object_track.object_id) 
                         FROM
                           main.object_track
-                          WHERE object_track.x > " + left + " AND object_track.x < " + right +
-                          " AND object_track.crt_date > '" + start +
-                          "' AND object_track.crt_date < '" + finish+"'";
+                          WHERE object_track.x >= " + left + " AND object_track.x <= " + right +
+                          " AND object_track.crt_date >= '" + start +
+                          "' AND object_track.crt_date <= '" + finish+"'";
             return context.GetData(sql);
         }
     }

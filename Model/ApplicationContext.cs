@@ -89,8 +89,8 @@ namespace Reporting.Model
                           1
                         FROM
                           main.object_status AS o
-                          WHERE o.crt_date > '"+data.DateStart+
-                          "' AND o.crt_date < '"+data.DateFinish+
+                          WHERE o.crt_date >= '"+data.DateStart+
+                          "' AND o.crt_date <= '"+data.DateFinish+
                           "' AND o.status_type_id = 2 " +
                           " AND o.object_id = " + data.IdObject;
                     NpgsqlCommand cmd = new NpgsqlCommand(sqlCommand, conn);
@@ -129,8 +129,8 @@ namespace Reporting.Model
                           o.status_type_id
                         FROM
                           main.object_status AS o
-                          WHERE o.crt_date > '" + data.DateStart +
-                          "' AND o.crt_date < '" + data.DateFinish +
+                          WHERE o.crt_date >= '" + data.DateStart +
+                          "' AND o.crt_date <= '" + data.DateFinish +
                           "' AND o.object_id = " + data.IdObject;
                         NpgsqlCommand cmd = new NpgsqlCommand(sqlCommand, conn);
                         NpgsqlDataReader dr = cmd.ExecuteReader();
@@ -173,8 +173,8 @@ namespace Reporting.Model
                           o.status_type_id
                         FROM
                           main.object_status AS o
-                          WHERE o.crt_date > '" + data.DateStart +
-                          "' AND o.crt_date < '" + data.DateFinish +
+                          WHERE o.crt_date >= '" + data.DateStart +
+                          "' AND o.crt_date <= '" + data.DateFinish +
                           "' AND o.object_id = " + data.IdObject;
                         NpgsqlCommand cmd = new NpgsqlCommand(sqlCommand, conn);
                         NpgsqlDataReader dr = cmd.ExecuteReader();
