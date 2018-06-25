@@ -11,14 +11,14 @@ namespace Reporting.Model
 {
     public class ApplicationContext 
     {
-        private string conn_param = "Server=127.0.0.1;Port=5432;User Id=postgres;Password=5f5a3a;Database=TestDB;";
-        
+        public string Config { get; internal set; }
+
         public int GetData(string sqlCommand)
         {
             int result = 0;
             try
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection(conn_param))
+                using (NpgsqlConnection conn = new NpgsqlConnection(Config))
                 {
                     conn.Open();
 
@@ -49,7 +49,7 @@ namespace Reporting.Model
             List<DateData> result = new List<DateData>();
             try
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection(conn_param))
+                using (NpgsqlConnection conn = new NpgsqlConnection(Config))
                 {
                     conn.Open();
 
@@ -80,7 +80,7 @@ namespace Reporting.Model
             int result = 0;
             try
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection(conn_param))
+                using (NpgsqlConnection conn = new NpgsqlConnection(Config))
                 {
                     conn.Open();
                     foreach(var data in dateList)
@@ -120,7 +120,7 @@ namespace Reporting.Model
             int result = 0;
             try
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection(conn_param))
+                using (NpgsqlConnection conn = new NpgsqlConnection(Config))
                 {
                     conn.Open();
                     foreach (var data in dateList)
@@ -164,7 +164,7 @@ namespace Reporting.Model
             int result = 0;
             try
             {
-                using (NpgsqlConnection conn = new NpgsqlConnection(conn_param))
+                using (NpgsqlConnection conn = new NpgsqlConnection(Config))
                 {
                     conn.Open();
                     foreach (var data in dateList)

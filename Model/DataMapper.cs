@@ -11,9 +11,12 @@ namespace Reporting.Model
         private ApplicationContext context = new ApplicationContext();
 
         private List<Zone> zones = new List<Zone>();
+        
+        private string _config;
 
-        public DataMapper()
+        public DataMapper(string config)
         {
+            context.Config = config;
             zones.Add(new Zone("Зона штатного появления 1", 5100, 5397, 10, 20));
             zones.Add(new Zone("Зона штатного появления 2", 4863, 5013, 10, 20));
             zones.Add(new Zone("Спуск конвейера", 2729, 2978, 10, 10));
@@ -24,6 +27,7 @@ namespace Reporting.Model
             zones.Add(new Zone("Пленкообертка", 325, 725, 10, 10));
             zones.Add(new Zone("Штатный уход", 30, 290, 20, 20));
         }
+
 
         /// <summary>
         /// Количество брикетов, проходящих зону штатного появления 1 и  зону штатного появления 2

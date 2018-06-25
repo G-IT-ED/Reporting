@@ -15,17 +15,30 @@ namespace Reporting
     public partial class Form1 : Form
     {
         private BindingList<ReportView> _bindingList = new BindingList<ReportView>();
+        private string _config;
 
         public Form1()
         {
             InitializeComponent();
             _dateStart.EditValue = DateTime.Now;
             _dateEnd.EditValue = DateTime.Now;
+            ReadConfig();
+        }
+
+        private void ReadConfig()
+        {
+            string line;
+            System.IO.StreamReader file = new System.IO.StreamReader(@"config.txt");
+            while ((line = file.ReadLine()) != null)
+            {
+                _config = line;
+            }
+            file.Close();
         }
 
         private void GetData(DateTime start, DateTime finish)
         {
-            DataMapper dataMapper = new DataMapper();
+            DataMapper dataMapper = new DataMapper(_config);
             _bindingList.Add(new ReportView("Количество брикетов, приходящих на спуске ленточного конвейера", dataMapper.CountComingDownConveyor(start,finish)));
             _bindingList.Add(new ReportView("Kоличество брикетов, отбракованных по весу", dataMapper.CountCulledByWeight(start,finish)));
             _bindingList.Add(new ReportView("Kоличество брикетов, отбракованных на металлодетекторе", dataMapper.CountCulledMetalDetector(start,finish)));
