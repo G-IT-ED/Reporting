@@ -102,7 +102,7 @@
             this._viewButton.Id = 5;
             this._viewButton.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("_viewButton.ImageOptions.Image")));
             this._viewButton.Name = "_viewButton";
-            this._viewButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this._viewButton_ItemClickAsync);
+            this._viewButton.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this._viewButton_ItemClick);
             // 
             // ExportButton
             // 

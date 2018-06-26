@@ -73,7 +73,7 @@ namespace Reporting
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не удалось загрузить данные!", ex.Message);
+                MessageBox.Show( ex.Message, "Не удалось загрузить данные!");
             }
         }
 

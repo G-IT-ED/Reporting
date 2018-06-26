@@ -232,3 +232,4 @@ C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\ru\DevExpress.Office.v
 C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.SplashScreen1.resources
 C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.exe.licenses
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Debug\Config.txt
+C:\Users\Admin\source\repos\Reporting\Reporting\obj\Debug\Reporting.csprojAssemblyReference.cache

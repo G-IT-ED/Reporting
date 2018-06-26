@@ -37,7 +37,7 @@ namespace Reporting.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не удалось получить данные из БД!", ex.Message);
+                MessageBox.Show( ex.Message, "Не удалось получить данные из БД!");
             }
             
             return result;
@@ -68,7 +68,7 @@ namespace Reporting.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не удалось получить данные из БД!", ex.Message);
+                MessageBox.Show( ex.Message, "Не удалось получить данные из БД!");
             }
 
             return result;
@@ -108,7 +108,7 @@ namespace Reporting.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не удалось получить данные из БД!", ex.Message);
+                MessageBox.Show(ex.Message, "Не удалось получить данные из БД!");
             }
 
             return result;
@@ -152,7 +152,7 @@ namespace Reporting.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не удалось получить данные из БД!", ex.Message);
+                MessageBox.Show(ex.Message, "Не удалось получить данные из БД!");
             }
 
             return result;
@@ -193,7 +193,7 @@ namespace Reporting.Model
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Не удалось получить данные из БД!", ex.Message);
+                MessageBox.Show( ex.Message, "Не удалось получить данные из БД!");
             }
 
             return result;
