@@ -68,7 +68,7 @@ namespace Reporting
                     MessageBox.Show("Дата начала должна быть раньше даты окончания!");
                     return;
                 }
-                GetData(start, finish.AddDays(1));
+                GetData(start, finish);
                 gridControl1.DataSource = _bindingList;                
             }
             catch (Exception ex)
@@ -79,7 +79,10 @@ namespace Reporting
 
         private async void ExportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            await Export();
+            if (_bindingList.Count == 0)
+                MessageBox.Show("Отсутсвуют данные для выгрузки! Выберите требуемую дату, затем выберите пункт просмотр.");
+            else
+                await Export();
         }
 
         private async Task Export()
