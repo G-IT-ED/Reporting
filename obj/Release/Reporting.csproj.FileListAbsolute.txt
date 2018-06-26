@@ -105,10 +105,6 @@ C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\DevExpress.XtraEdito
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\DevExpress.XtraGrid.v18.1.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\DevExpress.XtraLayout.v18.1.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\DevExpress.XtraPrinting.v18.1.dll
-C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.EntityFrameworkCore.dll
-C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.Extensions.Caching.Memory.dll
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.Extensions.Configuration.Abstractions.dll
@@ -146,10 +142,6 @@ C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\DevExpress.XtraEdito
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\DevExpress.XtraGrid.v18.1.xml
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\DevExpress.XtraLayout.v18.1.xml
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\DevExpress.XtraPrinting.v18.1.xml
-C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.EntityFrameworkCore.xml
-C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.EntityFrameworkCore.Abstractions.xml
-C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.EntityFrameworkCore.Design.xml
-C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.EntityFrameworkCore.Relational.xml
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.Extensions.Caching.Abstractions.xml
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.Extensions.Caching.Memory.xml
 C:\Users\Admin\source\repos\Reporting\Reporting\bin\Release\Microsoft.Extensions.Configuration.xml
