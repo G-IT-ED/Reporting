@@ -79,14 +79,17 @@ namespace Reporting
 
         private async void ExportButton_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (_bindingList.Count == 0)
-                MessageBox.Show("Отсутсвуют данные для выгрузки! Выберите требуемую дату, затем выберите пункт просмотр.");
-            else
-                await Export();
+            await Export();
         }
 
         private async Task Export()
         {
+            if (_bindingList.Count == 0)
+            {
+                MessageBox.Show("Отсутсвуют данные для выгрузки! Выберите требуемую дату, затем выберите пункт просмотр.");
+                return;
+            }
+
             //выбираем путь
             var saveFileDialog = new SaveFileDialog
             {
